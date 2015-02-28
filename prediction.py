@@ -1,3 +1,4 @@
+import numpy as np
 def getClosingPrices(data):
 	return [i['PX_LAST'] for i in data]
 class Model: 
@@ -11,7 +12,7 @@ class Model:
 	Alternatively, instead of providing the p-values explicitly, one
 	may instead 
 	"""
-	def __init__(self, pvals=[],func=lambda:(0)):
+	def __init__(self, time_difference, pvals=[],func=lambda:(0)):
 		try:
 			assert sum(pvals) >.99
 			assert sum(pvals) <  1.01
@@ -25,13 +26,49 @@ class Model:
 		if self.discrete:
 			return self.pvals[val]
 		return self.func(val)
-	def confidence_value_below()
-		pass
+	def confidence_value_below(self, confidence):
+		if self.discrete:
 
+		pass
+class Distribution:
+	"""A distribution is anything that will return sensible values.
+
+	Distribution itself is an extremely thin class: the main utility is
+	found in the subclasses, which provide greater specificity."""
+	pass
+class Continious_Distribution(Distribution):
+	def __init__(self, NineNine,NineFive,SevenFive,Fifty):
+		self.NineNine = NineNine
+		self.NineFive = NineFive
+		self.SevenFive = SevenFive
+		self.Fifty = Fifty
+		pass
+class List_Distribution(Distribution):
+	def __init__(self, time_difference, pvals, vals):
+		assert sum(pvals) >.99
+		assert sum(pvals) <  1.01
+		self.pvals = pvals
+		assert type(time_difference) == type(1)
+		self.td = time_difference
+		assert len(pvals)==len(vals)
+		self.vals = vals
+	def get_confidence_value_below(self, confidence)
+		summing = 0
+		for i in range(len(pvals)):
+			if summing < confidence:
+				summing+=pvals[i]
+			else:
+				break
+		return i
+def trainModels(models, data_subset):
+	pass
 def make_models(data_subset):
 	pass
 	#Look at data in different resolutions.
 	#Check out weekend effects, check out 
-	#Consider other bloomberg 
-def trainModels(models, data_subset):
-	pass
+	#Consider other bloomberg
+def stDevApproach(data_subset):
+	cp = np.array(getClosingPrices(data_subset))
+	stdev = np.std(cp)
+
+
