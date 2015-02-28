@@ -4,12 +4,17 @@ def chartFromNothing():
 	currency = "GBP"
 	amount = "40"
 	time="1"#time in days
-	data = dataGather.get(bitcoinName,currency,amount,time)
+	import json
+	#data = json.loads(dataGather.get(bitcoinName,currency,amount,time))
+	data = json.load(open("historicalBitcoinData.json"))
+	import cleaner
+	cleanedData = cleaner.use(data)
+	print(cleanedData)
 	import prediction
 	expectation = prediction.flux(data)
 	import chartMaker
 	chart = chartMaker.makeChart(data, expectation)
 	#Do something to print the chart
 	#FANCY IOS MAGIC GOES HERE
-if __name__ = "__main__":
+if __name__ == "__main__":
 	chartFromNothing()
