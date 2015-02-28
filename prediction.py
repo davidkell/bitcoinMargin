@@ -37,7 +37,8 @@ class Distribution:
 	found in the subclasses, which provide greater specificity."""
 	pass
 class Continious_Distribution(Distribution):
-	def __init__(self, NineNine,NineFive,SevenFive,Fifty):
+	def __init__(self, f,data):
+		NineNine,NineFive,SevenFive,Fifty=f(data)
 		self.NineNine = NineNine
 		self.NineFive = NineFive
 		self.SevenFive = SevenFive
@@ -63,7 +64,8 @@ class List_Distribution(Distribution):
 def trainModels(models, data_subset):
 	pass
 def make_models(data_subset):
-	pass
+	dumbStDev = Continious_Distribution(stDevApproach,data)
+	return dumbStDev
 	#Look at data in different resolutions.
 	#Check out weekend effects, check out 
 	#Consider other bloomberg
@@ -77,7 +79,25 @@ def stDevApproach(data_subset):
 	SevenFive = mean + stdev*.675
 	NineFive = mean + stdev*1.644
 	NineNine = mean + stdev*2.33
-
 	return NineNine,NineFive,SevenFive,Fifty
 
-
+def test_continious_distribution(f,data):
+	NineNineOvers = 0
+	NineFiveOvers = 0
+	SevenFiveOvers= 0
+	FiftyOvers    = 0
+	for i in range(200):
+		c = Continious_Distribution(f,data[-i-1:])
+		if c.NineNine < data[-i]:
+			NineNineOvers+=1
+		if c.NineNine < data[-i]:
+			NineNineOvers+=1
+		if c.NineNine < data[-i]:
+			NineNineOvers+=1
+		if c.NineNine < data[-i]:
+			NineNineOvers+=1
+	print("NineNineOvers"+str(NineNineOvers)+"Expected:"+"2")
+	print("NineFiveOvers"+str(NineFivevers)+"Expected:"+"10")
+	print("SevenFivevers"+str(SevenFiveOvers)+"Expected:"+"50")
+	print("FiftyOvers"+str(FiftyOvers)+"Expected:"+"100")
+test_continious_distribution(stDevApproach)

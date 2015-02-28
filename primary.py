@@ -7,15 +7,13 @@ import dataGather
 #import chartMaker
 def exportCSV():
 	#a = json.loads(dataGather.get(bitcoinName,currency,amount))
-	a = json.load(open("historicalBitcoinData.json"))
-	b = cleaner.use(a)
-	c = prediction.getClosingPrices(b)
+	dct = json.load(open("historicalBitcoinData.json"))
+	cleaned = cleaner.use(dct)
+	cp = prediction.getClosingPrices(cleaned)
 	with open("output.csv","wb") as csvfile:
 		writer = csv.writer(csvfile)
-		writer.writerow([str(fa) for fa in c])
+		writer.writerow([str(fa) for fa in cp])
 def chartFromNothing():
-	import dataGather
-	import json
 	#bitcoinName = "XBTC"
 	#currency = "GBP"
 	#amount = "40"
