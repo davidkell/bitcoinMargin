@@ -28,7 +28,7 @@ class Model:
 		return self.func(val)
 	def confidence_value_below(self, confidence):
 		if self.discrete:
-
+			pass
 		pass
 class Distribution:
 	"""A distribution is anything that will return sensible values.
@@ -52,7 +52,7 @@ class List_Distribution(Distribution):
 		self.td = time_difference
 		assert len(pvals)==len(vals)
 		self.vals = vals
-	def get_confidence_value_below(self, confidence)
+	def get_confidence_value_below(self, confidence):
 		summing = 0
 		for i in range(len(pvals)):
 			if summing < confidence:
@@ -68,7 +68,16 @@ def make_models(data_subset):
 	#Check out weekend effects, check out 
 	#Consider other bloomberg
 def stDevApproach(data_subset):
-	cp = np.array(getClosingPrices(data_subset))
-	stdev = np.std(cp)
+	cp = getClosingPrices(data_subset)
+	arr = np.array(cp)
+	stdev = np.std(arr)
+	mean = getClosingPrices(data_subset)[-1]
+		#Gets closing price on most recent date.
+	Fifty = mean
+	SevenFive = mean + stdev*.675
+	NineFive = mean + stdev*1.644
+	NineNine = mean + stdev*2.33
+
+	return NineNine,NineFive,SevenFive,Fifty
 
 
