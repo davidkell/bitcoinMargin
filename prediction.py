@@ -90,16 +90,18 @@ def test_continious_distribution(f,data):
 		c = Continious_Distribution(f,data[-i-1:])
 		if c.NineNine < data[-i]:
 			NineNineOvers+=1
-		if c.NineNine < data[-i]:
-			NineNineOvers+=1
-		if c.NineNine < data[-i]:
-			NineNineOvers+=1
-		if c.NineNine < data[-i]:
-			NineNineOvers+=1
-	print("NineNineOvers"+str(NineNineOvers)+"Expected:"+"2")
-	print("NineFiveOvers"+str(NineFiveOvers)+"Expected:"+"10")
-	print("SevenFivevers"+str(SevenFiveOvers)+"Expected:"+"50")
-	print("FiftyOvers"+str(FiftyOvers)+"Expected:"+"100")
+		if c.NineFive < data[-i]:
+			NineFiveOvers+=1
+		if c.SevenFive < data[-i]:
+			SevenFiveOvers+=1
+		if c.Fifty < data[-i]:
+			FiftyOvers+=1
+		print str(c.NineNine)
+		print(data[-i])
+	print("NineNineOvers "+str(NineNineOvers)+" Expected: 2")
+	print("NineFiveOvers "+str(NineFiveOvers)+" Expected: 10")
+	print("SevenFivevers "+str(SevenFiveOvers)+" Expected: 50")
+	print("FiftyOvers    "+str(FiftyOvers)+" Expected: 100")
 import json
 import cleaner
 test_continious_distribution(stDevApproach,cleaner.use(json.load(open("historicalBitcoinData.json"))))
