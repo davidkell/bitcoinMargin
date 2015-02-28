@@ -3,7 +3,7 @@ def chartFromNothing():
 	bitcoinName = "XBTC"
 	currency = "GBP"
 	amount = "40"
-	time="24"#time in hours
+	time="1"#time in days
 	data = dataGather.get(bitcoinName,currency,amount,time)
 	import prediction
 	expectation = prediction.flux(data)
