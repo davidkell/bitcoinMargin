@@ -13,7 +13,8 @@ def chartFromNothing():
 	import prediction
 	expectation = prediction.flux(data)
 	import chartMaker
-	chart = chartMaker.makeChart(data, expectation)
+	#chart = chartMaker.makeChart(data, expectation)
+	chart = chartMaker.makeChart(cleanedData)
 	#Do something to print the chart
 	#FANCY IOS MAGIC GOES HERE
 if __name__ == "__main__":
