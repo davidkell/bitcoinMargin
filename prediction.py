@@ -97,7 +97,9 @@ def test_continious_distribution(f,data):
 		if c.NineNine < data[-i]:
 			NineNineOvers+=1
 	print("NineNineOvers"+str(NineNineOvers)+"Expected:"+"2")
-	print("NineFiveOvers"+str(NineFivevers)+"Expected:"+"10")
+	print("NineFiveOvers"+str(NineFiveOvers)+"Expected:"+"10")
 	print("SevenFivevers"+str(SevenFiveOvers)+"Expected:"+"50")
 	print("FiftyOvers"+str(FiftyOvers)+"Expected:"+"100")
-test_continious_distribution(stDevApproach)
+import json
+import cleaner
+test_continious_distribution(stDevApproach,cleaner.use(json.load(open("historicalBitcoinData.json"))))
