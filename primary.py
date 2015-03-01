@@ -10,9 +10,11 @@ def exportCSV():
 	dct = json.load(open("historicalBitcoinData.json"))
 	cleaned = cleaner.use(dct)
 	cp = prediction.getClosingPrices(cleaned)
+	times = prediction.getClosingTimes(cleaned)
 	with open("output.csv","wb") as csvfile:
 		writer = csv.writer(csvfile)
 		writer.writerow([str(fa) for fa in cp])
+		writer.writerow([str(gb) for gb in times])
 def chartFromNothing():
 	#bitcoinName = "XBTC"
 	#currency = "GBP"

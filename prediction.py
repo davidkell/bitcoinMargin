@@ -1,6 +1,8 @@
 import numpy as np
 def getClosingPrices(data):
 	return [i['PX_LAST'] for i in data]
+def getClosingTimes(data):
+	return [i['date'] for i in data]
 class Model: 
 	"""A single mathematical model of the past data.
 
@@ -104,4 +106,4 @@ def test_continious_distribution(f,data):
 	print("FiftyOvers    "+str(FiftyOvers)+" Expected: 100")
 import json
 import cleaner
-test_continious_distribution(stDevApproach,cleaner.use(json.load(open("historicalBitcoinData.json"))))
+#test_continious_distribution(stDevApproach,cleaner.use(json.load(open("historicalBitcoinData.json"))))
